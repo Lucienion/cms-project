@@ -53,6 +53,8 @@
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
@@ -87,20 +89,23 @@ const onChangePwdType = () => {
 const loading = ref(false)
 const store = useStore()
 const loginFormRef = ref(null)
+const router = useRouter()
 
 const handleLogin = () => {
   // 触发校验
   loginFormRef.value.validate(valid => {
     if (!valid) return
     loading.value = true
-    store
-      .dispatch('user/login', loginForm.value)
-      .then(res => {
-        loading.value = false
-      })
-      .catch(err => {
-        loading.value = false
-      })
+    window.localStorage.setItem('token', '1234')
+    router.push('/')
+    // store
+    //   .dispatch('user/login', loginForm.value)
+    //   .then(res => {
+    //     loading.value = false
+    //   })
+    //   .catch(err => {
+    //     loading.value = false
+    //   })
   })
 }
 </script>
