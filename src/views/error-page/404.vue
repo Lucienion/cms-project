@@ -1,10 +1,9 @@
 <template>
-  <div>404</div>
+  <div class="">404</div>
 </template>
 
 <script setup>
 import {} from 'vue'
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

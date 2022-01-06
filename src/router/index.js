@@ -8,6 +8,7 @@ const privateRoutes = [
   {
     path: '/user',
     component: layout,
+    redirect: '/user/manage',
     meta: {
       title: 'user',
       icon: 'personnel'
@@ -15,10 +16,10 @@ const privateRoutes = [
     children: [
       {
         path: '/user/manage',
-        name: 'userManager',
+        name: 'userManage',
         component: () => import('@/views/user-manage/index'),
         meta: {
-          title: 'userManager',
+          title: 'userManage',
           icon: 'personnel-manage'
         }
       },
@@ -54,6 +55,51 @@ const privateRoutes = [
         component: () => import('@/views/import/index'),
         meta: {
           title: 'excelImport'
+        }
+      }
+    ]
+  },
+  {
+    path: '/article',
+    component: layout,
+    redirect: '/article/ranking',
+    meta: {
+      title: 'article',
+      icon: 'article'
+    },
+    children: [
+      {
+        path: '/article/ranking',
+        name: 'articleRanking',
+        component: () => import('@/views/article-ranking/index'),
+        meta: {
+          title: 'articleRanking',
+          icon: 'article-ranking'
+        }
+      },
+      {
+        path: '/article/:id',
+        name: 'articleDetail',
+        component: () => import('@/views/article-detail/index'),
+        meta: {
+          title: 'articleDetail'
+        }
+      },
+      {
+        path: '/article/create',
+        name: 'articleCreate',
+        component: () => import('@/views/article-create/index'),
+        meta: {
+          title: 'articleCreate',
+          icon: 'article-create'
+        }
+      },
+      {
+        path: '/article/editor/:id',
+        name: 'articleEditor',
+        component: () => import('@/views/article-create/index'),
+        meta: {
+          title: 'articleEditor'
         }
       }
     ]
@@ -101,7 +147,7 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...privateRoutes, ...publicRoutes]
+  routes: [...publicRoutes, ...privateRoutes]
 })
 
 export default router

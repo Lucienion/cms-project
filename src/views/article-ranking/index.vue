@@ -1,5 +1,5 @@
 <template>
-  <div class="">401</div>
+  <div class="">文章排名</div>
 </template>
 
 <script setup>
